@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#inscription-form").submit(function (event) {
+                var nom = $("#nom").val();
+                var prenom = $("#prenom").val();
+                var adresse = $("#adresse").val();
+                var email = $("#email").val();
+                var login = $("#login").val();
+                var password = $("#password").val();
+                var confirm = $("#confirm-password").val();
+                var telephone = $("#telephone").val();
+                var civilite = $("#civilite").val();
+                var pays = $("#pays").val();
+                var form = $("#inscription-form").val();
+
+                // J'ai essayé d'utiliser jQuery pour vérifier si tous les champs sont remplis, au lieu d'utiliser 'required' dans "input".
+                if (nom == '' || prenom == '' || adresse == '' || email == '' || login == '' || password == '' || confirm == '' || telephone == '' || civilite == '' || pays == '') {
+                    alert('Pour soumettre le formulaire, veuillez le remplir entièrement');
+                    event.preventDefault();
+                    return;
+                }
+
+                // L'expression reg de "email"
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if(!emailRegex.test(email)){
+                    alert('Pour soumettre le formulaire, veuillez le remplir entièrement');
+                    event.preventDefault();
+                    return; 
+                }
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <form id="inscription-form" action="#" method="post">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom"  ><br>
+
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom"  ><br>
+
+        <label for="adresse">Adresse :</label>
+        <input type="text" id="adresse" name="adresse"  ><br>
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email"  ><br>
+
+        <label for="login">Login :</label>
+        <input type="text" id="login" name="login"  ><br>
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password"  ><br>
+
+        <label for="confirm-password">Confirmer mot de passe :</label>
+        <input type="password" id="confirm-password" name="confirm-password"  ><br>
+
+        <label for="telephone">Téléphone :</label>
+        <input type="tel" id="telephone" name="telephone"  ><br>
+
+        <label for="civilite">Civilité :</label>
+        <select id="civilite" name="civilite"  >
+            <option value="">Sélectionnez</option>
+            <option value="Monsieur">Monsieur</option>
+            <option value="Madame">Madame</option>
+        </select><br>
+
+        <label for="pays">Pays :</label>
+        <input type="text" id="pays" name="pays"  ><br>
+
+        <input type="submit" value="S'inscrire">
+    </form>
+</body>
+
+</html>
