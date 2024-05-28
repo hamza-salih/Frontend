@@ -26,7 +26,7 @@
     <div id="quiz">
         <form id="quizForm">
             <p>Question 1: Quelle est la capitale de la France?</p>
-            <div class="question">
+            <div class="question1">
                 <div class="Paris">
                     <input type="radio" name="q1" value="Paris"> Paris<br>
                 </div>
@@ -37,7 +37,7 @@
             </div>
 
             <p>Question 2: Quel est le plus grand océan du monde?</p>
-            <div class="question">
+            <div class="question2">
                 <div class="Pacifique">
                     <input type="radio" name="q2" value="Pacifique"> Pacifique<br>
                 </div>
@@ -48,7 +48,7 @@
             </div>
 
             <p>Question 3: Qui a peint la Joconde?</p>
-            <div class="question">
+            <div class="question3">
                 <div class="Leonard">
                     <input type="radio" name="q3" value="Leonard"> Léonard de Vinci<br>
                 </div>
@@ -59,7 +59,7 @@
             </div>
 
             <p>Question 4: Quel est l'inventeur de la théorie de la relativité restreinte?</p>
-            <div class="question">
+            <div class="question4">
                 <div class="Einstein">
                     <input type="radio" name="q4" value="Einstein"> Einstein<br>
                 </div>
@@ -70,7 +70,7 @@
             </div>
 
             <p>Question 5: Quel est le plus haut sommet du monde?</p>
-            <div class="question">
+            <div class="question5">
                 <div class="Everest">
                     <input type="radio" name="q5" value="Everest"> Everest<br>
                 </div>
@@ -103,10 +103,10 @@
                 var rep5 = $("input[name='q5']:checked").val();
 
                 // Check if all questions are answered
-                if (!rep1 || !rep2 || !rep3 || !rep4 || !rep5) {
-                    $(".question1").addClass("no-answer");
-                    return;
-                }
+                // if (!rep1 || !rep2 || !rep3 || !rep4 || !rep5) {
+                //     $(".question1").addClass("no-answer");
+                //     return;
+                // }
 
                 // Question 1
                 if (rep1 !== "Paris") {
