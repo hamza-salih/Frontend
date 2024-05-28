@@ -1,0 +1,48 @@
+CREATE TABLE Country (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE State (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    country_id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    FOREIGN KEY (country_id) REFERENCES Country(id)
+);
+
+CREATE TABLE City (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    state_id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    FOREIGN KEY (state_id) REFERENCES State(id)
+);
+
+
+
+
+-- Insert countries
+INSERT INTO Country (name) VALUES ('Switzerland'), ('Italy'), ('France');
+
+-- Insert states/regions for each country
+INSERT INTO State (country_id, name) VALUES 
+(1, 'Zurich'), 
+(1, 'Geneva'), 
+(2, 'Lombardy'), 
+(2, 'Tuscany'), 
+(3, 'Île-de-France'), 
+(3, 'Provence-Alpes-Côte d\'Azur');
+
+-- Insert cities for each state/region
+INSERT INTO City (state_id, name) VALUES 
+(1, 'Zurich City'), 
+(1, 'Winterthur'), 
+(2, 'Geneva City'), 
+(2, 'Lausanne'), 
+(3, 'Milan'), 
+(3, 'Bergamo'), 
+(4, 'Florence'), 
+(4, 'Pisa'), 
+(5, 'Paris'), 
+(5, 'Versailles'), 
+(6, 'Nice'), 
+(6, 'Marseille');
