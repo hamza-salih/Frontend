@@ -37,6 +37,21 @@
                     event.preventDefault();
                     return; 
                 }
+
+                // L'expression reg de "Numero de telephone"
+                var Phoneregex = /^(06|07|05)\d{8}$/;
+                if(!Phoneregex.test(telephone)){
+                    alert('Le numéro de telephne est invalide');
+                    event.preventDefault();
+                    return; 
+                }
+
+                // Vérification du MDP 
+                if(confirm != password){
+                    alert('Le mot de passe de confirmation ne correspond pas au mot de passe');
+                    event.preventDefault();
+                    return; 
+                }
             });
         });
     </script>
