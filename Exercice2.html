@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QCM avec jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>QCM avec jQuery</h1>
+    <div id="quiz">
+        <div class="question">
+            <p>Question 1: Quelle est la capitale de la France?</p>
+            <input type="radio" name="q1" value="Paris"> Paris<br>
+            <input type="radio" name="q1" value="Londres"> Londres<br>
+            <input type="radio" name="q1" value="Berlin"> Berlin<br>
+
+            <p>Question 2: Quel est le plus grand océan du monde?</p>
+            <input type="radio" name="q2" value="Atlantique"> Atlantique<br>
+            <input type="radio" name="q2" value="Pacifique"> Pacifique<br>
+            <input type="radio" name="q2" value="Arctique"> Arctique<br>
+
+
+            <p>Question 3: Qui a peint la Joconde?</p>
+            <input type="radio" name="q3" value="Picasso"> Picasso<br>
+            <input type="radio" name="q3" value="Leonard de Vinci"> Leonard de Vinci<br>
+            <input type="radio" name="q3" value="Van Gogh"> Van Gogh<br>
+
+
+            <p>Question 4: Quel est l'inventeur de la théorie de la relativité restreinte?</p>
+            <input type="radio" name="q4" value="Isaac Newton"> Isaac Newton<br>
+            <input type="radio" name="q4" value="Albert Einstein"> Albert Einstein<br>
+            <input type="radio" name="q4" value="Galilée"> Galilée<br>
+
+
+            <p>Question 5: Quel est le plus haut sommet du monde?</p>
+            <input type="radio" name="q5" value="Mont Blanc"> Mont Blanc<br>
+            <input type="radio" name="q5" value="K2"> K2<br>
+            <input type="radio" name="q5" value="Everest"> Everest<br>
+
+        </div>
+        <button id="corriger">Corriger</button>
+    </div>
+    <div id="resultat"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
