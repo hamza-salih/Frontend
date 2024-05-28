@@ -33,7 +33,7 @@
                 // L'expression reg de "email"
                 var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if(!emailRegex.test(email)){
-                    alert('Pour soumettre le formulaire, veuillez le remplir entièrement');
+                    alert('L\'email est invalide');
                     event.preventDefault();
                     return; 
                 }
