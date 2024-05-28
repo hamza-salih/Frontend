@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculatrice</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(45deg, #3b8d99, #6baf92);
+    font-family: 'Arial', sans-serif;
+}
+
+.calculator {
+    width: 320px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    background: #f8f9fa;
+}
+
+.calculator h6 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.calculator-screen {
+    width: 100%;
+    height: 60px;
+    text-align: right;
+    border: none;
+    margin-bottom: 10px;
+    font-size: 24px;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.calculator-keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    height: 60px;
+    font-size: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ddd;
+}
+
+.equal-sign {
+    grid-column: span 2;
+}
+
+    </style>
+</head>
+<body>
+    <div class="calculator card">
+        <center><h6>Calculatrice</h6></center>
+        <br>
+        <input type="text" class="calculator-screen form-control" disabled />
+
+        <div class="calculator-keys">
+            <button type="button" class="btn btn-light">7</button>
+            <button type="button" class="btn btn-light">8</button>
+            <button type="button" class="btn btn-light">9</button>
+            <button type="button" class="btn btn-info clear">CE</button>
+            <button type="button" class="btn btn-danger all-clear">C</button>
+
+            <button type="button" class="btn btn-light">4</button>
+            <button type="button" class="btn btn-light">5</button>
+            <button type="button" class="btn btn-light">6</button>
+            <button type="button" class="btn btn-light operator">/</button>
+            <button type="button" class="btn btn-light operator">*</button>
+
+            <button type="button" class="btn btn-light">1</button>
+            <button type="button" class="btn btn-light">2</button>
+            <button type="button" class="btn btn-light">3</button>
+            <button type="button" class="btn btn-light operator">-</button>
+            <button type="button" class="btn btn-light operator">+</button>
+
+            <button type="button" class="btn btn-light">0</button>
+            <button type="button" class="btn btn-light">.</button>
+            <button type="button" class="btn btn-warning equal-sign">=</button>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function() {
+    let screen = $('.calculator-screen');
+    let currentInput = '';
+    let operator = '';
+    let firstNumber = '';
+
+    function clearScreen() {
+        screen.val('');
+    }
+
+    function updateScreen(value) {
+        screen.val(value);
+    }
+
+    function handleNumber(number) {
+        if (currentInput.length < 10) {
+            currentInput += number;
+            updateScreen(currentInput);
+        }
+    }
+
+    function handleOperator(op) {
+        if (currentInput === '' && op !== '-') {
+            return;
+        }
+        if (currentInput === '' && op === '-') {
+            currentInput = '-';
+            updateScreen(currentInput);
+            return;
+        }
+        if (operator !== '') {
+            calculate();
+        }
+        firstNumber = currentInput;
+        currentInput = '';
+        operator = op;
+    }
+
+    function calculate() {
+        let result = 0;
+        const a = parseFloat(firstNumber);
+        const b = parseFloat(currentInput);
+
+        switch (operator) {
+            case '+':
+                result = a + b;
+                break;
+            case '-':
+                result = a - b;
+                break;
+            case '*':
+                result = a * b;
+                break;
+            case '/':
+                result = a / b;
+                break;
+        }
+        currentInput = result.toString();
+        operator = '';
+        firstNumber = '';
+        updateScreen(currentInput);
+    }
+
+    $('.btn').click(function() {
+        const buttonText = $(this).text();
+
+        if ($(this).hasClass('operator')) {
+            handleOperator(buttonText);
+        } else if ($(this).hasClass('equal-sign')) {
+            calculate();
+        } else if ($(this).hasClass('all-clear')) {
+            clearScreen();
+            currentInput = '';
+            operator = '';
+            firstNumber = '';
+        } else if ($(this).hasClass('clear')) {
+            clearScreen();
+            currentInput = '';
+        } else {
+            handleNumber(buttonText);
+        }
+    });
+});
+
+</script>
+</html>
